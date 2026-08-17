@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -28,6 +28,7 @@ type Status = "idle" | "loading" | "success" | "error";
 export function Contact({ defaultService }: { defaultService?: ServiceInterestValue }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -42,7 +43,11 @@ export function Contact({ defaultService }: { defaultService?: ServiceInterestVa
   const onSubmit = async (values: FormValues) => {
     setStatus("loading");
     try {
-      await submitContact(values);
+      await submitContact({
+        ...values,
+        botcheck: honeypotRef.current?.value,
+        pageUrl: typeof window !== "undefined" ? window.location.href : undefined,
+      });
       setStatus("success");
       reset();
     } catch (err) {
@@ -72,6 +77,16 @@ export function Contact({ defaultService }: { defaultService?: ServiceInterestVa
         <div className="mt-14 grid gap-12 lg:grid-cols-5">
           <RevealOnScroll variants={slideInLeft} className="lg:col-span-3">
             <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+              <input
+                ref={honeypotRef}
+                type="text"
+                name="botcheck"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] h-0 w-0 opacity-0"
+              />
+
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-brand-black">

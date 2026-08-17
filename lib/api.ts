@@ -7,6 +7,10 @@ export interface ContactPayload {
   company?: string;
   serviceInterest: string;
   message: string;
+  /** Campo trampa anti-spam — debe llegar vacío en un envío real. */
+  botcheck?: string;
+  /** URL de la página desde la que se envió el formulario. */
+  pageUrl?: string;
 }
 
 export class ApiError extends Error {}
@@ -33,12 +37,15 @@ export async function submitContact(payload: ContactPayload): Promise<void> {
         access_key: WEB3FORMS_ACCESS_KEY,
         subject: `Nuevo contacto desde la web — ${payload.name}`,
         from_name: payload.name,
-        name: payload.name,
-        email: payload.email,
-        phone: payload.phone || "No indicado",
-        company: payload.company || "No indicado",
+        replyto: payload.email,
+        botcheck: payload.botcheck ?? "",
+        Nombre: payload.name,
+        Correo: payload.email,
+        Teléfono: payload.phone || "No indicado",
+        Empresa: payload.company || "No indicado",
         "Servicio de interés": serviceLabel,
-        message: payload.message,
+        "Página de origen": payload.pageUrl || "No disponible",
+        Mensaje: payload.message,
       }),
     });
   } catch {
