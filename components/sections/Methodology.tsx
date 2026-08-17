@@ -128,7 +128,7 @@ export function Methodology() {
             <p className="mt-2 max-w-2xl text-base leading-relaxed text-white/80">
               Sigues el avance de tu proyecto sprint a sprint, no solo al final — con
               acceso directo a lo que se está construyendo en cada etapa, para que nunca
-              tengas que preguntar "¿cómo va mi proyecto?".
+              tengas que preguntar “¿cómo va mi proyecto?”.
             </p>
           </RevealOnScroll>
         </div>
