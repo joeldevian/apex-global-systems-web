@@ -56,7 +56,7 @@ export const company = {
       step: "2",
       icon: "file-text",
       title: "Propuesta y cotización",
-      description: "Te enviamos un plan claro, con alcance y costo definidos.",
+      description: "Te presentamos un plan claro, con alcance y costo definidos.",
     },
     {
       step: "3",

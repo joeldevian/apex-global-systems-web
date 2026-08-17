@@ -7,7 +7,7 @@ export const history: HistoryMilestone[] = [
   {
     year: "2023",
     description:
-      "Joel Ircañaupa Yaurimo funda Apex Global Systems en Ayacucho, Perú, con la idea de llevar automatización e inteligencia artificial a negocios locales que no tienen un equipo técnico propio. Primeros proyectos: sitios web institucionales para negocios de la ciudad.",
+      "El ingeniero Joel Ircañaupa, junto a un equipo de socios estratégicos, funda Apex Global Systems en Ayacucho, Perú, con la idea de llevar automatización e inteligencia artificial a negocios locales que no tienen un equipo técnico propio. Primeros proyectos: sitios web institucionales para negocios de la ciudad.",
   },
   {
     year: "2024",
