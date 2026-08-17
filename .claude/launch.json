@@ -3,15 +3,9 @@
   "configurations": [
     {
       "name": "apex-web",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["run", "dev:web"],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 3000
-    },
-    {
-      "name": "apex-api",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["run", "dev:api"],
-      "port": 4000
     }
   ]
 }
