@@ -1,0 +1,18 @@
+{
+  "name": "apex-global-systems",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo del sitio web de Apex Global Systems — frontend Next.js y backend NestJS.",
+  "scripts": {
+    "build:shared-types": "pnpm --filter @apex/shared-types run build",
+    "dev": "pnpm run build:shared-types && pnpm --parallel --filter ./apps/* run dev",
+    "dev:web": "pnpm run build:shared-types && pnpm --filter web run dev",
+    "dev:api": "pnpm run build:shared-types && pnpm --filter api run dev",
+    "build": "pnpm run build:shared-types && pnpm --filter ./apps/* run build",
+    "lint": "pnpm --filter ./apps/* run lint"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@11.20.0"
+}
